@@ -1,0 +1,28 @@
+{% extends 'main/base_pc.html' %}
+{% load static %}
+
+{%block title%}
+{{archive.displayname}}
+{%endblock%}
+
+{%block content%}
+<div class=text-center>
+    <h1>{{archive.displayname}}</h1>
+</div>
+<hr>
+                <div class="row">
+            {% for gallery in gallery.all %}
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <a class="navbar-item" href="/archives/gallery/{{gallery.name}}">
+                                    <img src="{% static gallery.thumbnail.path%}" class="card-img-top"></a>
+                                <div class="card-body">
+                                    <p class="card-text">{{gallery.displayname}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+{%endblock%}
